@@ -29,17 +29,12 @@ const Button = styled.button.attrs({
   margin: 15px 15px 15px 5px;
 `;
 
-const CancelButton = styled.a.attrs({
-  className: `btn btn-danger`
-})`
-  margin: 15px 15px 15px 5px;
-`;
-
 class MoviesInsert extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: ""
+      movie: "",
+      result: ""
     };
   }
 
@@ -50,13 +45,11 @@ class MoviesInsert extends Component {
 
   handleSearchMovieSubmit = async e => {
     const movie = encodeURIComponent(`${this.state.movie}`);
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=7a5e08206be3323eb3abdd03cd7b1d8c&language=en-US&query=${movie}&page=1&include_adult=false`
-      )
-      .then(res => {
-        console.log(res);
-      });
+    const res = await axios(
+      `https://api.themoviedb.org/3/search/movie?api_key=7a5e08206be3323eb3abdd03cd7b1d8c&language=en-US&query=${movie}&page=1&include_adult=false`
+    );
+    const result = await res.data;
+    this.setState({ result });
   };
 
   //   await api.insertMovie(payload).then(res => {
@@ -81,7 +74,6 @@ class MoviesInsert extends Component {
           onChange={this.handleChangeInputTitle}
         />
         <Button onClick={this.handleSearchMovieSubmit}>Search Movies</Button>
-        {/* <CancelButton href={"/movies/list"}>Cancel</CancelButton> */}
       </Wrapper>
     );
   }
