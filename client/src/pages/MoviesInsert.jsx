@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import api from "../api";
+// import api from "../api";
 import axios from "axios";
 import styled from "styled-components";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
 
 const Title = styled.h1.attrs({
   className: "h1"
@@ -34,7 +36,7 @@ class MoviesInsert extends Component {
     super(props);
     this.state = {
       movie: "",
-      result: ""
+      result: []
     };
   }
 
@@ -63,17 +65,27 @@ class MoviesInsert extends Component {
   // };
 
   render() {
-    const { title } = this.state;
+    const resultsArray = this.state.result.results || [];
+
     return (
       <Wrapper>
         <Title>Search Movies</Title>
         <Label>Title: </Label>
-        <InputText
-          type='text'
-          value={title}
-          onChange={this.handleChangeInputTitle}
-        />
+        <InputText type='text' onChange={this.handleChangeInputTitle} />
         <Button onClick={this.handleSearchMovieSubmit}>Search Movies</Button>
+        <GridList cellHeight={160}>
+          {!resultsArray ? (
+            <>
+              <div> No results</div>
+            </>
+          ) : (
+            resultsArray.map(movie => (
+              <GridListTile key={movie.id}>
+                <img src='https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg' />
+              </GridListTile>
+            ))
+          )}
+        </GridList>
       </Wrapper>
     );
   }
