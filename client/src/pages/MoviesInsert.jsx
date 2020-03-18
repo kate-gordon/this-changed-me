@@ -67,6 +67,16 @@ class MoviesInsert extends Component {
   render() {
     const resultsArray = this.state.result.results || [];
 
+    // Mapping through list of search results and making grid of movie images 
+    let movieResults = resultsArray.map(function(movie) {
+      const srcLink = `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`;
+      return (
+        <GridListTile key={movie.id}>
+          <img src={srcLink} />
+        </GridListTile>
+      );
+    });
+
     return (
       <Wrapper>
         <Title>Search Movies</Title>
@@ -79,11 +89,7 @@ class MoviesInsert extends Component {
               <div> No results</div>
             </>
           ) : (
-            resultsArray.map(movie => (
-              <GridListTile key={movie.id}>
-                <img src='https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg' />
-              </GridListTile>
-            ))
+            <> {movieResults} </>
           )}
         </GridList>
       </Wrapper>
