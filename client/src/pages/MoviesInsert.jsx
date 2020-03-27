@@ -1,35 +1,12 @@
 import React, { Component } from "react";
-// import api from "../api";
 import axios from "axios";
-import styled from "styled-components";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-
-const Title = styled.h1.attrs({
-  className: "h1"
-})``;
-
-const Wrapper = styled.div.attrs({
-  className: "form-group"
-})`
-  margin: 0 30px;
-`;
-
-const Label = styled.label`
-  margin: 5px;
-`;
-
-const InputText = styled.input.attrs({
-  className: "form-control"
-})`
-  margin: 5px;
-`;
-
-const Button = styled.button.attrs({
-  className: `btn btn-primary`
-})`
-  margin: 15px 15px 15px 5px;
-`;
+import {
+  Button,
+  Container,
+  GridList,
+  GridListTile,
+  TextField
+} from "@material-ui/core";
 
 class MoviesInsert extends Component {
   constructor(props) {
@@ -40,10 +17,14 @@ class MoviesInsert extends Component {
     };
   }
 
+  // Input in the search bar
+
   handleChangeInputTitle = async e => {
     e.preventDefault();
     this.setState({ movie: e.target.value });
   };
+
+  // Movie search
 
   handleSearchMovieSubmit = async e => {
     const movie = encodeURIComponent(`${this.state.movie}`);
@@ -54,20 +35,11 @@ class MoviesInsert extends Component {
     this.setState({ result });
   };
 
-  //   await api.insertMovie(payload).then(res => {
-  //     window.alert(`Movie inserted successfully`);
-  //     this.setState({
-  //       name: "",
-  //       rating: "",
-  //       time: ""
-  //     });
-  //   });
-  // };
-
   render() {
     const resultsArray = this.state.result.results || [];
 
-    // Mapping through list of search results and making grid of movie images 
+    // Mapping through list of search results and making grid of movie images
+
     let movieResults = resultsArray.map(function(movie) {
       const srcLink = `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`;
       return (
@@ -78,10 +50,15 @@ class MoviesInsert extends Component {
     });
 
     return (
-      <Wrapper>
-        <Title>Search Movies</Title>
-        <Label>Title: </Label>
-        <InputText type='text' onChange={this.handleChangeInputTitle} />
+      <Container>
+        <h1>Search Movies</h1>
+        <TextField
+          id='outlined-search'
+          label='Search field'
+          type='search'
+          variant='outlined'
+          onChange={this.handleChangeInputTitle}
+        />
         <Button onClick={this.handleSearchMovieSubmit}>Search Movies</Button>
         <GridList cellHeight={160}>
           {!resultsArray ? (
@@ -92,7 +69,7 @@ class MoviesInsert extends Component {
             <> {movieResults} </>
           )}
         </GridList>
-      </Wrapper>
+      </Container>
     );
   }
 }
