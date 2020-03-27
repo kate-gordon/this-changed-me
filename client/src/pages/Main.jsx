@@ -8,7 +8,7 @@ import {
   TextField
 } from "@material-ui/core";
 
-class MoviesInsert extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -74,4 +74,4 @@ class MoviesInsert extends Component {
   }
 }
 
-export default MoviesInsert;
+export default Main;

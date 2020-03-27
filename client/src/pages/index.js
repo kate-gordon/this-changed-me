@@ -1,5 +1,4 @@
-import MoviesList from "./MoviesList";
-import MoviesInsert from "./MoviesInsert";
-import MoviesUpdate from "./MoviesUpdate";
+import Main from "./Main";
 
-export { MoviesList, MoviesInsert, MoviesUpdate };
+
+export { Main };
