@@ -14,7 +14,7 @@ class Main extends Component {
     super(props);
     this.state = {
       movie: "",
-      result: []
+      result: ''
     };
   }
 
@@ -52,28 +52,30 @@ class Main extends Component {
     });
 
     return (
-      <Container>
-        <h1>This</h1>
-        <Dropdown />
-        <h1>Changed Me</h1>
-        <TextField
-          id='outlined-search'
-          label='Search field'
-          type='search'
-          variant='outlined'
-          onChange={this.handleChangeInputTitle}
-        />
-        <Button onClick={this.handleSearchMovieSubmit}>Search</Button>
-        <GridList cellHeight={160}>
+      <>
+        <Container>
+          <h1>This</h1>
+          <Dropdown />
+          <h1>Changed Me</h1>
+          <TextField
+            id='outlined-search'
+            label='Search field'
+            type='search'
+            variant='outlined'
+            onChange={this.handleChangeInputTitle}
+          />
+          <Button onClick={this.handleSearchMovieSubmit}>Search</Button>
           {!resultsArray ? (
             <>
               <div> No results</div>
             </>
           ) : (
-            <> {movieResults} </>
+            <GridList cellHeight={160}>
+               {movieResults} 
+            </GridList>
           )}
-        </GridList>
-      </Container>
+        </Container>
+      </>
     );
   }
 }
