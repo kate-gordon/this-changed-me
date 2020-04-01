@@ -33,6 +33,7 @@ class Main extends Component {
       `https://api.themoviedb.org/3/search/movie?api_key=7a5e08206be3323eb3abdd03cd7b1d8c&language=en-US&query=${movie}&page=1&include_adult=false`
     );
     const result = await res.data;
+    console.log(result);
     this.setState({ result });
   };
 
@@ -45,7 +46,7 @@ class Main extends Component {
       const srcLink = `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`;
       return (
         <GridListTile key={movie.id}>
-          <img src={srcLink} />
+          <img alt={movie.title} src={srcLink} />
         </GridListTile>
       );
     });
