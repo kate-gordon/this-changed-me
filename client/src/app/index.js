@@ -5,6 +5,8 @@ import { Main } from "../pages";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  // Set up React Router for potential scaling
+
   return (
     <Router>
       <Switch>

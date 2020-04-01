@@ -7,6 +7,7 @@ import {
   GridListTile,
   TextField
 } from "@material-ui/core";
+import { Dropdown } from "../components";
 
 class Main extends Component {
   constructor(props) {
@@ -51,7 +52,9 @@ class Main extends Component {
 
     return (
       <Container>
-        <h1>Search Movies</h1>
+        <h1>This</h1>
+        <Dropdown />
+        <h1>Changed Me</h1>
         <TextField
           id='outlined-search'
           label='Search field'
@@ -59,7 +62,7 @@ class Main extends Component {
           variant='outlined'
           onChange={this.handleChangeInputTitle}
         />
-        <Button onClick={this.handleSearchMovieSubmit}>Search Movies</Button>
+        <Button onClick={this.handleSearchMovieSubmit}>Search</Button>
         <GridList cellHeight={160}>
           {!resultsArray ? (
             <>

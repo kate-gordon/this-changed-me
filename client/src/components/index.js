@@ -1,4 +1,3 @@
-import Links from "./Links";
-import NavBar from "./NavBar";
+import Dropdown from "./Dropdown";
 
-export { Links, NavBar };
+export { Dropdown };
