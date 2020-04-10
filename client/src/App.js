@@ -1,16 +1,16 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import { SearchBox } from "./components";
+import { SearchBox, Navbar } from "./components";
 
 function App() {
-    return (
-      <>
-        <Container>
-          <SearchBox />
-        </Container>
-      </>
-    );
-  }
+  return (
+    <>
+      <Container>
+        <Navbar />
+        <SearchBox />
+      </Container>
+    </>
+  );
+}
 
 export default App;
-
