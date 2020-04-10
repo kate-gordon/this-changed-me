@@ -37,6 +37,8 @@ class SearchBox extends Component {
           style={{
             display: "flex",
             flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
             width: "300px",
             height: "100vh",
           }}
