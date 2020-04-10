@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Dropdown from "./Dropdown";
 import { Button, Container, TextField } from "@material-ui/core";
 import MovieResults from "./MovieResults";
 
@@ -34,7 +33,7 @@ class SearchBox extends Component {
     return (
       <Container>
         <h1>This</h1>
-        <Dropdown />
+        <h1>Movie</h1>
         <h1>Changed Me</h1>
         <TextField
           id='outlined-search'

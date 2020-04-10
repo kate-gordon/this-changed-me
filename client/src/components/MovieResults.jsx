@@ -16,7 +16,7 @@ const MovieResults = (props) => {
     return result.backdrop_path != null;
   });
 
-  // Mapping through list of search results and making grid of movie images
+  // Map through list of search results and makes a grid of movie images
 
   let movieResults = filteredResults.map(function (movie) {
     const srcLink = `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`;
