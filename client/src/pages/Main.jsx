@@ -14,7 +14,7 @@ class Main extends Component {
     super(props);
     this.state = {
       movie: "",
-      result: ''
+      results: []
     };
   }
 
@@ -32,17 +32,23 @@ class Main extends Component {
     const res = await axios(
       `https://api.themoviedb.org/3/search/movie?api_key=7a5e08206be3323eb3abdd03cd7b1d8c&language=en-US&query=${movie}&page=1&include_adult=false`
     );
-    const result = await res.data;
-    console.log(result);
-    this.setState({ result });
+    const results = await res.data;
+    console.log(results);
+    this.setState({ results });
   };
 
   render() {
-    const resultsArray = this.state.result.results || [];
+    const resultsArray = this.state.results.results || [];
+
+    // Filtered by results that have an image to display
+
+    const filteredResults = resultsArray.filter(function(result) {
+      return result.backdrop_path != null;
+    });
 
     // Mapping through list of search results and making grid of movie images
 
-    let movieResults = resultsArray.map(function(movie) {
+    let movieResults = filteredResults.map(function(movie) {
       const srcLink = `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`;
       return (
         <GridListTile key={movie.id}>
@@ -70,9 +76,7 @@ class Main extends Component {
               <div> No results</div>
             </>
           ) : (
-            <GridList cellHeight={160}>
-               {movieResults} 
-            </GridList>
+            <GridList cellHeight={160}>{movieResults}</GridList>
           )}
         </Container>
       </>
