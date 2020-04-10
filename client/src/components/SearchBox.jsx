@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button, Container, TextField } from "@material-ui/core";
+import { Box, Button, Container, TextField } from "@material-ui/core";
 import MovieResults from "./MovieResults";
 
 class SearchBox extends Component {
@@ -31,18 +31,26 @@ class SearchBox extends Component {
   // Input in the search bar
   render() {
     return (
-      <Container>
-        <h1>This</h1>
-        <h1>Movie</h1>
-        <h1>Changed Me</h1>
-        <TextField
-          id='outlined-search'
-          label='Search field'
-          type='search'
-          variant='outlined'
-          onChange={this.handleChangeInputTitle}
-        />
-        <Button onClick={this.handleSearchMovieSubmit}>Search</Button>
+      <Container style={{ display: "flex" }}>
+        <Box
+          p={5}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "300px",
+            height: "100vh",
+          }}
+        >
+          <h1>This Movie Changed Me </h1>
+          <TextField
+            id='outlined-search'
+            label='Search field'
+            type='search'
+            variant='outlined'
+            onChange={this.handleChangeInputTitle}
+          />
+          <Button onClick={this.handleSearchMovieSubmit}>Search</Button>
+        </Box>
         <MovieResults results={this.state.results} />
       </Container>
     );

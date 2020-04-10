@@ -43,7 +43,7 @@ const MovieResults = (props) => {
           <div> No results</div>
         </>
       ) : (
-        <GridList cellHeight={350} cols={3} spacing={1}>
+        <GridList cellHeight={350} cols={2} spacing={1}>
           {movieResults}
         </GridList>
       )}
