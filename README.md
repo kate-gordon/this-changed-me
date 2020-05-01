@@ -1,5 +1,7 @@
 This Changed Me is an application aiming to create an interactive experience with our most memorable moments across media.
 
+While my passion lies in crafting pixel-perfect front end experiences, I find it valuable to develop a familiarity with backend systems as well. For this project, I learned how to connect the server to a React client. 
+
 # Tech Used
 
 React, MongoDB, Material UI
